@@ -1,0 +1,22 @@
+{
+  "account": {
+    "base": "",
+    "fields": {
+      "balance": "asset"
+    }
+  },
+  "account_name": "name",
+  "transfer": {
+    "base": "",
+    "action": {
+      "name": "transfer",
+      "account": "eosio"
+    },
+    "fields": {
+      "from": "account_name",
+      "to": "account_name",
+      "quantity": "asset",
+      "memo": "string"
+    }
+  }
+}

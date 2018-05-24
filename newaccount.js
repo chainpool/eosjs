@@ -8,7 +8,7 @@ eos = Eos.Localnet({keyProvider: wif})
 eos.transaction(tr => {
   tr.newaccount({
     creator: 'eosio',
-    name: 'ontract11',
+    name: 'ntract11',
     owner: pubkey,
     active: pubkey
   })
