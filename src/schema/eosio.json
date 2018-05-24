@@ -6,6 +6,12 @@
     }
   },
   "account_name": "name",
+  "proposal_data": {
+    "base": "",
+    "fields": {
+      "code_id": "string"
+    }
+  },
   "transfer": {
     "base": "",
     "action": {
@@ -65,6 +71,19 @@
         "bpname": "account_name"
      }
   },
+ "createp": {
+ "base": "",
+ "action": {
+	"name": "createp",
+	"account": "eosio"
+ },
+ "fields": {
+	"creator": "account_name",
+	"proposal": "name",
+	"data": "proposal_data",
+	"expiration": "time"
+ }
+},
   "proproposal": {
     "base": "",
      "action": {
