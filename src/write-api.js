@@ -95,7 +95,7 @@ function WriteApi(Network, network, config, Transaction) {
 
       const abiPromises = []
       // Eos contract operations are cached (efficient and offline transactions)
-      const cachedCode = new Set(['eosio', 'eosio.token'])
+      const cachedCode = new Set(['eosio', 'eosio'])
       accounts.forEach(account => {
         if(!cachedCode.has(account)) {
           abiPromises.push(config.abiCache.abiAsync(account))
@@ -164,7 +164,7 @@ function WriteApi(Network, network, config, Transaction) {
     })
   }
 
-  function genMethod(type, definition, transactionArg, account = 'eosio.token', name = type) {
+  function genMethod(type, definition, transactionArg, account = 'eosio', name = type) {
     return function (...args) {
       if (args.length === 0) {
         console.error(usage(type, definition, Network, account, config))
@@ -391,6 +391,7 @@ function WriteApi(Network, network, config, Transaction) {
       rawTx = Object.assign({}, rawTx)
 
       rawTx.actions = arg.actions
+      rawTx.fee = '0.1 EOS'
 
       // console.log('rawTx', JSON.stringify(rawTx,null,4))
 
@@ -526,7 +527,7 @@ function usage (type, definition, Network, account, config) {
   out()
 
   let struct
-  if(account === 'eosio.token') {
+  if(account === 'eosio') {
     const {structs} = Structs(
       Object.assign(
         {defaults: true, network: Network},

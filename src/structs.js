@@ -14,7 +14,7 @@ const {
 /** Configures Fcbuffer for EOS specific structs and types. */
 module.exports = (config = {}, extendedSchema) => {
   const structLookup = (lookupName, account) => {
-    const cachedCode = new Set(['eosio', 'eosio.token'])
+    const cachedCode = new Set(['eosio', 'eosio'])
     if(cachedCode.has(account)) {
       return structs[lookupName]
     }
@@ -188,6 +188,7 @@ function precisionCache(assetCache, sym) {
   const assetSymbol = parseAssetSymbol(sym)
   let precision = assetSymbol.precision
 
+/*
   if(currentAccount) {
     const asset = assetCache.lookup(assetSymbol.symbol, currentAccount)
     if(asset) {
@@ -201,7 +202,8 @@ function precisionCache(assetCache, sym) {
       // Lookup data for later (appendByteBuffer needs it)
       assetCache.lookupAsync(assetSymbol.symbol, currentAccount)
     }
-  }
+  }*/
+  precision = 4
   return {symbol: assetSymbol.symbol, precision}
 }
 
@@ -310,7 +312,7 @@ const ExtendedAsset = (validation, baseTypes, customTypes) => {
 
   function toString(value) {
     assert.equal(typeof value, 'string', 'extended_asset is expecting a string like: 9.9999 SBL@contract')
-    const [asset, contract = 'eosio.token'] = value.split('@')
+    const [asset, contract = 'eosio'] = value.split('@')
     currentAccount = contract
     return `${assetType.fromObject(asset)}@${contract}`
   }
