@@ -8,4 +8,6 @@ eos.transfer()
 // Usage with options (options are always optional)
 options = {broadcast: false}
 
-eos.transfer({from: 'twryy4swtrj3', to: 'eosio', quantity: '1 EOS', memo: ''}, options)
+eos.transaction(tr => {
+     tr.transfer({from: 'twryy4swtrj3', to: 'eosio', quantity: '1 EOS', memo: ''}, options)
+     })
