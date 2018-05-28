@@ -34,7 +34,8 @@
       "fields": {
         "bpname": "account_name",
         "producer_key": "public_key",
-        "commission_rate": "uint32"
+        "commission_rate": "uint32",
+        "expiration" : "time"
       }
   },
   "vote": {
